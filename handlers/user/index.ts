@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { UserModel } from "../../models/User";
-import { IUser } from "../../types/types";
+import { IUser, RoleEnum } from "../../types/types";
 
 export class UserController {
   static async create(req: Request, res: Response) {
@@ -23,7 +23,12 @@ export class UserController {
         });
       }
 
-      const newUser = await UserModel.create(req.body);
+      const data = {
+        ...req.body,
+        role: RoleEnum.USER
+      }
+
+      const newUser = await UserModel.create(data);
 
       return res.status(201).json({
         success: true,

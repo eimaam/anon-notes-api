@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import { IUser } from "../types/types";
+import { IUser, RoleEnum } from "../types/types";
 import bcrypt from "bcrypt";
 
 export const userSchema = new Schema<IUser>({
@@ -33,7 +33,12 @@ export const userSchema = new Schema<IUser>({
     type: String,
     required: false,
   },
-});
+  role: {
+    type: String,
+    enum: RoleEnum,
+    default: RoleEnum.USER,
+  },
+}, { timestamps: true });
 
 // Hash the password before saving the user
 userSchema.pre("save", async function (next: any) {

@@ -1,8 +1,21 @@
 import { Request, Response } from "express";
-import { ThreadModel } from "../../models/Threads";
+import { ThreadModel } from "../../models/Thread";
+import { validationResult } from "express-validator";
 
 export class ThreadController {
   static async create(req: Request, res: Response) {
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res
+        .status(400)
+        .json({
+          success: false,
+          message: "Invalid input",
+          errors: errors.array(),
+        });
+    }
     const { title, userId } = req.body;
 
     try {
@@ -67,6 +80,19 @@ export class ThreadController {
   }
 
   static async update(req: Request, res: Response) {
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res
+        .status(400)
+        .json({
+          success: false,
+          message: "Invalid input",
+          errors: errors.array(),
+        });
+    }
+
     const { threadId } = req.params;
     const { title } = req.body;
 

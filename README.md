@@ -1,65 +1,99 @@
 
-# nodejs-express-vercel
+# Anon-notes: Anonymous Notes - Backend
 
-## Deploy Node.js and Express API on Vercel
+This repository contains the backend code for the Anonymous Messaging App `anon-notes`, a web application that allows users to create threads with titles and receive anonymous replies.
 
-This repository contains a simple demo of deploying a Node.js and Express API to Vercel serverless
+## Table of Contents
+
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Environment Variables](#environment-variables)
+  - [Running the Application](#running-the-application)
+
+## Features
+
+- User registration and authentication
+- Create threads with titles
+- Receive anonymous messages for threads > Responses
+- Favourite and Archive Replies
+- Share Replies to Socials as image or plain text.
+- Light and Dark mode support for the UI (handled in the frontend)
+- Notifications via Firebase
+
+## Tech Stack
+
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Authentication**: JSON Web Tokens (JWT)
+- **Notifications**: Firebase
+- **Validation**: express-validator
+- **Programming Language**: TypeScript
+
+## Getting Started
 
 ### Prerequisites
 
-Before you begin, ensure you have the following installed:
+- Node.js (v20 or later)
+- npm or yarn
+- MongoDB (local or cloud instance)
+- Firebase project (not necessary)
 
-- **Node.js** (v14 or higher)
-- **npm** (Node Package Manager)
+### Installation
 
-### Getting Started
-
-1. **Clone this repository**:
-
-   ```bash
-   git clone https://github.com/eimaam/nodejs-express-vercel.git
-   ```
-
-2. **Navigate to the project directory**:
+1. **Clone the repository:**
 
    ```bash
-   cd nodejs-express-vercel
+   git clone [https://github.com/your-username/anonymous-messaging-backend.git](https://github.com/eimaam/anon-notes-api.git)
+   cd anon-notes-api
    ```
 
-3. **Install dependencies**:
+2. **Install dependencies:**
 
    ```bash
    npm install
    ```
 
-4. **Run the development server**:
+   or
 
    ```bash
-   npm run dev
+   yarn install
    ```
 
-5. **Open your browser and visit http://localhost:9000** to see the API in action.
+### Environment Variables
 
-### Deploying to Vercel
+Create a `.env` file in the root directory and add the env as listed in `.env.example` file
 
-1. **Sign up or log in to Vercel**.
+### Running the Application
 
-2. **Create a new project** and link it to your GitHub repository.
+Start the development server:
 
-3. **Configure your deployment settings** (e.g., environment variables, custom domains).
+```bash
+npm run dev
+```
 
-4. **Deploy your project** to Vercel.
+or
 
-### Usage
+```bash
+yarn dev
+```
 
-- Modify the Express routes and logic in the `api` folder to build your API endpoints.
-- Customize the project as needed for your specific use case:
-- - Ensure to Update the `package.json` file with details of your own Project - title, name, author, repository URL etc...
+The server will start on `http://localhost:3000` (Here the PORT you served via `env).
 
-### License
+### Example JSON Responses
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+#### Register
 
-
-Feel free to add more sections, elaborate on the API endpoints, and include any other relevant information in your README. 
-Good luck with your project! Happy Hacking! 🚀
+```json
+{
+  "success": true,
+  "message": "User registered successfully",
+  "data": {
+    "id": "60d21b4667d0d8992e610c85",
+    "username": "john_doe",
+    "email": "john@example.com"
+  }
+}
+```

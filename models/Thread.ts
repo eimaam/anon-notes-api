@@ -17,7 +17,7 @@ export const threadSchema = new Schema<IThread>(
     },
     replies: {
       type: [Schema.Types.ObjectId],
-      
+      default: [],
     },
   },
   { timestamps: true }
